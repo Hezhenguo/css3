@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#start{
+			width: 1000px;
+			height: 400px;
+			background: #ccc;
+			position: absolute;
+			left: 100px;
+			-webkit-perspective:800px;
+			-webkit-perspective-origin: center -55%;
+		}
+		#container{
+			width: 100px;
+			height: 100px;
+			/*background: #000;*/
+			position: absolute;
+			top: 50%;
+			margin-top: -50px;
+			left: 50%;
+			margin-left: -50px;
+			-webkit-transform-style:preserve-3d;
+			-webkit-transition:transform 1s ease;/*监测tarnsform变化*/
+		}
+		img{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			-webkit-transition:transform 1s ease;/*监测tarnsform变化*/
+
+		}
+	</style>
+</head>
+<body>
+	<div id="start">
+		<div id="container">
+		</div>
+	</div>
+	<script>
+		var oContainer = document.getElementById('container');
+		var now=0;
+		var index=0;
+		for(var i=0;i<9;i++){
+			var oImg = new Image();
+			oImg.onload = function(){//图片加载完成；
+				now++;
+				if(now == 9){
+					var aImg = document.getElementsByTagName('img');
+					for(var i=0;i<aImg.length;i++){
+						(function(index){
+							setTimeout(function(){
+								aImg[index].style.WebkitTransform='rotateY('+index*40+'deg) translateZ(190px)';
+							},(9-index)*100)
+
+						})(i);
+
+					}
+				}
+
+			}
+			oImg.src='image/'+(i+1)+'.png';
+			oContainer.appendChild(oImg);
+
+		}
+
+
+		oContainer.onclick=function(){
+			index++;
+			this.style.WebkitTransform='rotateY('+(-index*40)+'deg)';
+		}
+
+	</script>
+</body>
+</html>

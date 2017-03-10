@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,ol{
+			list-style: none;
+		}
+		#container{
+			width: 50px;
+			height: 50px;
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+			/*background: #ccc;*/
+		}
+		#menu li{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			-webkit-transition:transform 1s ease;
+		}
+		#home{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			-webkit-transition:transform 1s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<ul id="menu">
+			<li><img src="img/close.png" alt=""></li>
+			<li><img src="img/full.png" alt=""></li>
+			<li><img src="img/open.png" alt=""></li>
+			<li><img src="img/prev.png" alt=""></li>
+			<li><img src="img/refresh.png" alt=""></li>
+		</ul>
+		<div id="home">
+			<img src="img/home.png" alt="">
+		</div>
+	</div>
+	<script>
+		(function(){
+			var oHome = document.querySelector('#home');
+			var oMenu = document.querySelector('#menu');
+			var aMenu = oMenu.querySelectorAll('li');
+			var bClicked = true;
+			oHome.addEventListener('click',function(){
+				if(bClicked){
+					oHome.style.WebkitTransform='rotate(-360deg)';
+					for(var i=0;i<aMenu.length;i++){
+						var x= -150 * Math.sin(i*22.5*Math.PI/180);
+						var y= -150 * Math.cos(i*22.5*Math.PI/180);
+						aMenu[i].style.WebkitTransform='translate('+x+'px,'+y+'px) rotate(-360deg)';
+					}
+				}else{
+					oHome.style.WebkitTransform='rotate(0deg)';
+					for(var i=0;i<aMenu.length;i++){
+						var x= -150 * Math.sin(i*22.5*Math.PI/180);
+						var y= -150 * Math.cos(i*22.5*Math.PI/180);
+						aMenu[i].style.WebkitTransform='translate(0px,0px) rotate(0deg)';  
+					}
+				}
+						bClicked=!bClicked;
+				
+			});
+		})();
+	</script>
+</body>
+</html>

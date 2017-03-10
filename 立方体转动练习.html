@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background: #000;
+			-webkit-perspective:800px;
+			-webkit-perspective-origin: center -55%;/*视角的变化*/
+
+		}
+		.container{
+			width: 200px;
+			height: 200px;
+			margin:100px auto;
+			-webkit-transform-style:preserve-3d;/*维持3D效果*/
+			-webkit-animation:rotateCube 3s linear infinite;
+
+		}
+		@-webkit-keyframes rotateCube{
+			form{
+
+			}
+			to{
+				-webkit-transform:rotateY(-360deg);
+			}
+
+		}
+		.content{
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+			position: absolute;
+			text-align: center;
+			line-height: 200px;
+			font-size: 48px;
+			opacity: 0.7;
+			border-radius: 5px;
+			border: 1px solid #fff;
+		}
+		.four{
+			-webkit-transform:rotateY(180deg) translateZ(100px);
+		}
+		.three{
+			-webkit-transform:rotateY(90deg) translateZ(100px);
+		}
+		.five{
+			-webkit-transform:rotateY(-90deg) translateZ(100px);
+		}
+		.two{
+			-webkit-transform:translateZ(100px);
+		}
+		.one{
+			-webkit-transform:rotateX(90deg) translateZ(100px);
+		}
+		.six{
+			-webkit-transform:rotateX(-90deg) translateZ(100px);
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="content one">1</div>
+	<div class="content two">2</div>
+	<div class="content three">3</div>
+	<div class="content four">4</div>
+	<div class="content five">5</div>
+	<div class="content six">6</div>
+</div>
+	
+</body>
+</html>

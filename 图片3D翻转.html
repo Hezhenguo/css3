@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#container{
+			width: 800px;
+			height: 500px;
+			/*background: #ccc;*/
+			position: absolute;
+			left:50%;
+			margin-left: -400px;
+			/*top: 100px;*/
+		}
+		#content {
+			width: 512px;
+			height: 256px;
+			position: absolute;
+			left: 50%;
+			margin-left: -256px;
+			top: 50%;
+			margin-top: -128px;
+			-webkit-perspective:800px;
+			-webkit-transition: transform 1s ease;	
+		}
+		#content img{
+			position: absolute;
+			-webkit-transform:rotateX(180deg);
+			-webkit-transform-origin:center bottom;
+			opacity: 0;
+			
+		}
+		#content .show{
+			-webkit-animation: showl 5s ease forwards;
+			z-index: 1;
+
+		}
+		@-webkit-keyframes showl{
+			0%{	}
+			15%{
+				-webkit-transform:rotateX(-30deg);
+			}
+			25%{
+				-webkit-transform:rotateX(15deg);
+			}
+			35%{
+				-webkit-transform:rotateX(-15deg);
+			}
+			
+			100%{
+				-webkit-transform:rotateX(0deg);
+				opacity: 1;
+			}
+			
+		}
+		#prev{
+			font-size: 50px;
+			position: absolute;
+			top: 50%;
+		}
+		#next{
+			font-size: 50px;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			cursor: pointer;
+		}
+		/*.select{
+			z-index: 1;
+		}*/
+	</style>
+</head>
+<body>
+	<div id="container">
+		<span id="prev">&lt;</span>
+		<span id="next">&gt;</span>
+		<div id="content">
+			<img src="image/4.png" alt="" class="show" >
+			<img src="image/5.png" alt="" >
+			<img src="image/6.png" alt="">
+			<img src="image/7.png" alt="">
+		</div>
+	</div>
+	<script>
+		var oContent = document.getElementById('content');
+		var aImg = oContent.getElementsByTagName('img');
+		var oPrev = document.getElementById('prev');
+		var oNext = document.getElementById('next'); 
+		var index=0;
+		oNext.onclick = function(){
+			index++;
+			if(index==aImg.length){
+				index=0;
+			}
+			for(var i=0;i<aImg.length;i++){
+				aImg[i].className='';
+			}
+				aImg[index].className='show';			
+		};
+
+
+
+	</script>
+</body>
+</html>
